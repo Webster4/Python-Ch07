@@ -34,9 +34,12 @@ def next_block(the_file):
 	correct = next_line(the_file)
 	correct = correct.strip('\n')
 	
+	points = next_line(the_file)
+	points = points.strip('\n')
+	
 	explanation = next_line(the_file)
 	
-	return category, question, answers, correct, explanation 
+	return category, question, answers, correct,points, explanation 
 	
 def welcome(title):
 	"""welcome player"""
@@ -51,7 +54,7 @@ def main():
 	welcome(title)
 	score = 0
 	
-	category, question, answers, correct, explanation = next_block(trivia_game)
+	category, question, answers, correct, points, explanation = next_block(trivia_game)
 	
 	while category:
 		print(category)
@@ -64,15 +67,15 @@ def main():
 		# Checking if answer is good
 		if answer == correct:
 			print("\nCorrect answer!!!", end=" ")
-			score += 1
+			score += int(points)
 		else:
 			print("\nSorry. Your answer is not correct")
 			
 		print(explanation)
-		print("Your current score is: ",score,"\n\n")
+		print("\nYour current score is: ",score,"\n\n\n")
 		
 		# getting next block of text
-		category, question, answers, correct, explanation = next_block(trivia_game)
+		category, question, answers, correct, points, explanation = next_block(trivia_game)
 	
 	# Closing of txt file
 	trivia_game.close()
