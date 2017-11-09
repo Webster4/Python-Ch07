@@ -65,13 +65,13 @@ def again():
 	
 def table(score):
 	"""Function creates table of best results and pickles it"""
-	board = {}
+	
 	print("Congratulation!!! You have enough points to get into Best Results Board")
-	name = input("\nPlease enter your name: ")
-	board[name] = str(score)
-	f = open("pickle_board.bat", 'wb')
-	pickle.dump(board, f)
-	f.close
+	player_score = (input("\nPlease enter your name: ")) + ":" + str(score)
+	
+	f = open("pickle_board.txt", 'a')
+	f.write(player_score)
+	f.close()
 	print("Your score was added!")
 	
 def main():
