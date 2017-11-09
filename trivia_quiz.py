@@ -2,6 +2,7 @@
 # In program I used reading and saving data in txt file
 
 import sys
+import pickle
 
 def open_file(file_name, mode):
 	"""Open file"""
@@ -46,7 +47,21 @@ def welcome(title):
 	print("Welcome in Trivia Game\n")
 	print(title)
 	
+def ask_yes_no(question):
+	"""Asking yes or no questions"""
+	response = None
+	while response not in ("y", "n"):
+		response = input(question).lower()
+	return response
 	
+def again():
+	"""asking if player want to play again"""
+	if_again = ask_yes_no("\nDo you want play again (press y or n) ")
+	if if_again == "y":
+		print("\n\n")
+		main()
+	elif if_again == "n":
+		input("\n\nPlease press enter key if you want exit\n\n")	
 	
 def main():
 	trivia_game = open_file("cant_refuse.txt", "r")
@@ -84,7 +99,7 @@ def main():
 	print("\nThank you for your time spared for this game. Good bye!")
 	
 main()
-	
+		
 	
 input("\n\nPlease press enter to exit program")
 	
