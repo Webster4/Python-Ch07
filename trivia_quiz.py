@@ -61,7 +61,18 @@ def again():
 		print("\n\n")
 		main()
 	elif if_again == "n":
-		input("\n\nPlease press enter key if you want exit\n\n")	
+		print("\nThank you for your time spared for this game. Good bye!")	
+	
+def table(score):
+	"""Function creates table of best results and pickles it"""
+	board = {}
+	print("Congratulation!!! You have enough points to get into Best Results Board")
+	name = input("\nPlease enter your name: ")
+	board[name] = str(score)
+	f = open("pickle_board.bat", 'wb')
+	pickle.dump(board, f)
+	f.close
+	print("Your score was added!")
 	
 def main():
 	trivia_game = open_file("cant_refuse.txt", "r")
@@ -95,11 +106,17 @@ def main():
 	# Closing of txt file
 	trivia_game.close()
 	
+	
 	print("\nYour final score is ",score)
-	print("\nThank you for your time spared for this game. Good bye!")
+	
+	if score >= 15:
+		table(score)
+	
+	again()
+	
 	
 main()
-		
+	
 	
 input("\n\nPlease press enter to exit program")
 	
